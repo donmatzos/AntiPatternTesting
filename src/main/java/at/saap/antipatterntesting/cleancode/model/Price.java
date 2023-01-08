@@ -22,7 +22,7 @@ public class Price
 
     @Getter
     @Setter
-    private int vatRate;
+    private BigDecimal vatRate;
 
     @Getter
     @Setter

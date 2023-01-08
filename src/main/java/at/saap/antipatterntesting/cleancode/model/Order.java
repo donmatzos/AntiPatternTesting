@@ -4,12 +4,21 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.Date;
+import java.util.List;
 
 public class Order
 {
     @Getter
     @Setter
-    private Item item;
+    private CalculationType calculationType;
+
+    @Getter
+    @Setter
+    private List<Item> items;
+
+    @Getter
+    @Setter
+    private DeliveryAddress deliveryAddress;
 
     @Getter
     @Setter
@@ -18,8 +27,4 @@ public class Order
     @Getter
     @Setter
     private Date paymentDate;
-
-    @Getter
-    @Setter
-    private DeliveryAddress deliveryAddress;
 }
