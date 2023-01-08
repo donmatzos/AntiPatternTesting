@@ -1,0 +1,18 @@
+{
+  "calculationType":"NET",
+  "items":[
+    {
+      "name":"item 1",
+      "price":{
+        "netAmount":2000.0,
+        "grossAmount":null,
+        "vatAmount":null,
+        "vatRate":0.2,
+        "currency":"EUR"
+      }
+    }
+  ],
+  "deliveryAddress":null,
+  "orderDate":1673192012018,
+  "paymentDate":1673192012018
+}

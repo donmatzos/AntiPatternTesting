@@ -5,7 +5,9 @@ import at.saap.antipatterntesting.cleancode.model.output.OrderCalculationResult;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+@ResponseBody
 @Service
 public interface OrderService
 {

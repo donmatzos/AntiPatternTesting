@@ -16,7 +16,7 @@ public final class CalculationResultTransformer
     {
         final OrderCalculationResult result = new OrderCalculationResult();
         fillBasicOrderInformation(result, order);
-        calculateOrderTotal(result);
+        calculateTotalOrderSum(result);
 
         return result;
     }
@@ -29,7 +29,7 @@ public final class CalculationResultTransformer
         result.setPaymentDate(order.getPaymentDate());
     }
 
-    private static void calculateOrderTotal(final OrderCalculationResult result)
+    private static void calculateTotalOrderSum(final OrderCalculationResult result)
     {
         final Price totalPrice = new Price();
         for (Item item : result.getCalculatedItems())
@@ -38,8 +38,9 @@ public final class CalculationResultTransformer
             totalPrice.setVatAmount(BigDecimalUtils.nullSafeAdd(totalPrice.getVatAmount(), item.getPrice().getVatAmount()));
             totalPrice.setGrossAmount(BigDecimalUtils.nullSafeAdd(totalPrice.getGrossAmount(), item.getPrice().getGrossAmount()));
         }
-        result.getOrderPrice().setVatRate(result.getCalculatedItems().get(0).getPrice().getVatRate());
         result.setOrderPrice(totalPrice);
+        result.getOrderPrice().setVatRate(result.getCalculatedItems().get(0).getPrice().getVatRate());
+        result.getOrderPrice().setCurrency(result.getCalculatedItems().get(0).getPrice().getCurrency());
         result.setCalculationDate(Date.from(Instant.now()));
     }
 
