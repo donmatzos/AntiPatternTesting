@@ -13,7 +13,7 @@ public class Item
 {
     @Getter
     @Setter
-    private String name;
+    private String externalId;
 
     @Getter
     @Setter

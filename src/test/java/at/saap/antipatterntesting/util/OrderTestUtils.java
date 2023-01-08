@@ -51,7 +51,7 @@ public final class OrderTestUtils
         if (CalculationType.NET.equals(order.getCalculationType()))
         {
             final Item item = Item.builder()
-                    .name("item 1")
+                    .externalId("net item")
                     .price(createNetPrice(priceAmount, vatRate))
                     .build();
             order.getItems().add(item);
@@ -59,7 +59,7 @@ public final class OrderTestUtils
         else if (CalculationType.GROSS.equals(order.getCalculationType()))
         {
             final Item item = Item.builder()
-                    .name("item 1")
+                    .externalId("gross item")
                     .price(createGrossPrice(priceAmount, vatRate))
                     .build();
             order.getItems().add(item);
@@ -97,7 +97,7 @@ public final class OrderTestUtils
         for (int i = 0; i < 5; i++)
         {
             final Item item = Item.builder()
-                    .name("Item " + i)
+                    .externalId("Item " + i)
                     .price(price)
                     .build();
             items.add(item);
