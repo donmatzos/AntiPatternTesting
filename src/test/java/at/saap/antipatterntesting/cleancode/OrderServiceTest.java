@@ -11,11 +11,13 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Currency;
+import java.util.InputMismatchException;
 
 @SpringBootTest
 @EnableAutoConfiguration
-@Test()
+@Test
 public class OrderServiceTest extends AbstractTestNGSpringContextTests
 {
     private final OrderServiceImpl orderService = new OrderServiceImpl();
@@ -44,4 +46,13 @@ public class OrderServiceTest extends AbstractTestNGSpringContextTests
         Assert.assertEquals(result.getOrderPrice().getCurrency(), Currency.getInstance("EUR"));
     }
 
+    @Test(expectedExceptions = InputMismatchException.class)
+    public void testWrongInput()
+    {
+        final Order order = new Order();
+        order.setCalculationType(CalculationType.NET);
+        order.setItems(new ArrayList<>());
+
+        orderService.calculateOrder(order);
+    }
 }
