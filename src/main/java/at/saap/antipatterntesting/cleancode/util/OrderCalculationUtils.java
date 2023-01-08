@@ -1,14 +1,11 @@
 package at.saap.antipatterntesting.cleancode.util;
 
-import at.saap.antipatterntesting.cleancode.model.CalculationType;
 import at.saap.antipatterntesting.cleancode.model.Item;
 import at.saap.antipatterntesting.cleancode.model.Order;
 import at.saap.antipatterntesting.cleancode.model.output.OrderCalculationResult;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.util.InputMismatchException;
-import java.util.List;
 
 public final class OrderCalculationUtils
 {

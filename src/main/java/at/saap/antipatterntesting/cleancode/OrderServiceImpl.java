@@ -28,7 +28,7 @@ public class OrderServiceImpl implements OrderService
 
     private static void verifyOrder(final Order order)
     {
-        if (order.getItems().isEmpty() || !checkPrices(order.getCalculationType(), order.getItems()))
+        if (order.getItems().isEmpty() || hasIncorrectPrices(order.getCalculationType(), order.getItems()))
         {
             throw new InputMismatchException();
         }
@@ -47,7 +47,7 @@ public class OrderServiceImpl implements OrderService
         }
     }
 
-    private static boolean checkPrices(final CalculationType calculationType, final List<Item> items)
+    private static boolean hasIncorrectPrices(final CalculationType calculationType, final List<Item> items)
     {
         return CalculationType.NET.equals(calculationType) ? checkNetPrices(items) : checkGrossPrices(items);
     }

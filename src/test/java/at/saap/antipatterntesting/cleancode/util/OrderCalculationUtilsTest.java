@@ -25,4 +25,16 @@ public class OrderCalculationUtilsTest
         Assert.assertEquals(result.getOrderPrice().getVatAmount().doubleValue(), 400.);
         Assert.assertEquals(result.getOrderPrice().getCurrency(), Currency.getInstance("EUR"));
     }
+
+    @Test
+    public void testGrossCalculation()
+    {
+        final Order order = OrderTestUtils.createOrder(CalculationType.GROSS, BigDecimal.valueOf(2400.), BigDecimal.valueOf(.20));
+
+        final OrderCalculationResult result = OrderCalculationUtils.calculateGrossOrder(order);
+
+        Assert.assertEquals(result.getOrderPrice().getNetAmount().doubleValue(), 2000.);
+        Assert.assertEquals(result.getOrderPrice().getVatAmount().doubleValue(), 400.);
+        Assert.assertEquals(result.getOrderPrice().getCurrency(), Currency.getInstance("EUR"));
+    }
 }
