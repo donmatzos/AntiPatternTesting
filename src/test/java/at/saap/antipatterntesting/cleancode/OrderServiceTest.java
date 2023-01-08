@@ -1,6 +1,6 @@
 package at.saap.antipatterntesting.cleancode;
 
-import at.saap.antipatterntesting.cleancode.model.CalculationType;
+import at.saap.antipatterntesting.cleancode.model.CalculationTypeEnum;
 import at.saap.antipatterntesting.cleancode.model.Order;
 import at.saap.antipatterntesting.cleancode.model.output.OrderCalculationResult;
 import at.saap.antipatterntesting.util.OrderTestUtils;
@@ -26,7 +26,7 @@ public class OrderServiceTest extends AbstractTestNGSpringContextTests
     @Test
     public void testNetCalculation()
     {
-        final Order order = OrderTestUtils.createOrder(CalculationType.NET, BigDecimal.valueOf(2000.), BigDecimal.valueOf(.20));
+        final Order order = OrderTestUtils.createOrder(CalculationTypeEnum.NET, BigDecimal.valueOf(2000.), BigDecimal.valueOf(.20));
 
         final OrderCalculationResult result = orderService.calculateOrder(order);
 
@@ -38,7 +38,7 @@ public class OrderServiceTest extends AbstractTestNGSpringContextTests
     @Test
     public void testGrossCalculation()
     {
-        final Order order = OrderTestUtils.createOrder(CalculationType.GROSS, BigDecimal.valueOf(2400.), BigDecimal.valueOf(.20));
+        final Order order = OrderTestUtils.createOrder(CalculationTypeEnum.GROSS, BigDecimal.valueOf(2400.), BigDecimal.valueOf(.20));
 
         final OrderCalculationResult result = orderService.calculateOrder(order);
 
@@ -51,7 +51,7 @@ public class OrderServiceTest extends AbstractTestNGSpringContextTests
     public void testWrongInput()
     {
         final Order order = new Order();
-        order.setCalculationType(CalculationType.NET);
+        order.setCalculationType(CalculationTypeEnum.NET);
         order.setItems(new ArrayList<>());
 
         orderService.calculateOrder(order);

@@ -1,6 +1,6 @@
 package at.saap.antipatterntesting.cleancode;
 
-import at.saap.antipatterntesting.cleancode.model.CalculationType;
+import at.saap.antipatterntesting.cleancode.model.CalculationTypeEnum;
 import at.saap.antipatterntesting.cleancode.model.Item;
 import at.saap.antipatterntesting.cleancode.model.Order;
 import at.saap.antipatterntesting.cleancode.model.output.OrderCalculationResult;
@@ -21,7 +21,7 @@ public class OrderServiceImpl implements OrderService
     public OrderCalculationResult calculateOrder(@RequestBody final Order order)
     {
         verifyOrder(order);
-        return CalculationType.NET.equals(order.getCalculationType())
+        return CalculationTypeEnum.NET.equals(order.getCalculationType())
                 ? OrderCalculationUtils.calculateNetOrder(order)
                 : OrderCalculationUtils.calculateGrossOrder(order);
     }
@@ -47,9 +47,9 @@ public class OrderServiceImpl implements OrderService
         }
     }
 
-    private static boolean hasIncorrectPrices(final CalculationType calculationType, final List<Item> items)
+    private static boolean hasIncorrectPrices(final CalculationTypeEnum calculationType, final List<Item> items)
     {
-        return CalculationType.NET.equals(calculationType) ? checkNetPrices(items) : checkGrossPrices(items);
+        return CalculationTypeEnum.NET.equals(calculationType) ? checkNetPrices(items) : checkGrossPrices(items);
     }
 
     private static boolean checkNetPrices(final List<Item> items)

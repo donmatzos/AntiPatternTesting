@@ -2,7 +2,7 @@ package at.saap.antipatterntesting.util;
 
 import at.saap.antipatterntesting.antipattern.SuperItem;
 import at.saap.antipatterntesting.antipattern.SuperOrder;
-import at.saap.antipatterntesting.cleancode.model.CalculationType;
+import at.saap.antipatterntesting.cleancode.model.CalculationTypeEnum;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -19,7 +19,7 @@ public final class SuperOrderTestUtils
                 .currency(Currency.getInstance("EUR"))
                 .build();
         final SuperOrder order = SuperOrder.builder()
-                .calculationType(CalculationType.NET)
+                .calculationType(CalculationTypeEnum.NET)
                 .items(new ArrayList<>())
                 .build();
         order.getItems().add(item);
@@ -35,7 +35,7 @@ public final class SuperOrderTestUtils
                 .currency(Currency.getInstance("EUR"))
                 .build();
         final SuperOrder order = SuperOrder.builder()
-                .calculationType(CalculationType.NET)
+                .calculationType(CalculationTypeEnum.NET)
                 .items(new ArrayList<>())
                 .build();
         order.getItems().add(item);

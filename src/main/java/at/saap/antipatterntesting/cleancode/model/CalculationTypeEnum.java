@@ -1,6 +1,6 @@
 package at.saap.antipatterntesting.cleancode.model;
 
-public enum CalculationType
+public enum CalculationTypeEnum
 {
     NET,
     GROSS

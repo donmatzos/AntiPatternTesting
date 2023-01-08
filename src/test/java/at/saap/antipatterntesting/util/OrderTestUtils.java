@@ -1,6 +1,6 @@
 package at.saap.antipatterntesting.util;
 
-import at.saap.antipatterntesting.cleancode.model.CalculationType;
+import at.saap.antipatterntesting.cleancode.model.CalculationTypeEnum;
 import at.saap.antipatterntesting.cleancode.model.DeliveryAddress;
 import at.saap.antipatterntesting.cleancode.model.Item;
 import at.saap.antipatterntesting.cleancode.model.Order;
@@ -25,7 +25,7 @@ public final class OrderTestUtils
     public static Order createDemoTestOrder()
     {
         return Order.builder()
-                .calculationType(CalculationType.GROSS)
+                .calculationType(CalculationTypeEnum.GROSS)
                 .items(buildDemoItemList())
                 .deliveryAddress(buildDemoDeliveryAddress())
                 .orderDate(Date.from(Instant.now()))
@@ -33,7 +33,7 @@ public final class OrderTestUtils
                 .build();
     }
 
-    public static Order createOrder(final CalculationType calculationType, final BigDecimal priceAmount, final BigDecimal vatRate)
+    public static Order createOrder(final CalculationTypeEnum calculationType, final BigDecimal priceAmount, final BigDecimal vatRate)
     {
         final Order order = Order.builder()
                 .calculationType(calculationType)
@@ -48,7 +48,7 @@ public final class OrderTestUtils
 
     private static void addItemToOrder(final Order order, final BigDecimal priceAmount, final BigDecimal vatRate)
     {
-        if (CalculationType.NET.equals(order.getCalculationType()))
+        if (CalculationTypeEnum.NET.equals(order.getCalculationType()))
         {
             final Item item = Item.builder()
                     .externalId("net item")
@@ -56,7 +56,7 @@ public final class OrderTestUtils
                     .build();
             order.getItems().add(item);
         }
-        else if (CalculationType.GROSS.equals(order.getCalculationType()))
+        else if (CalculationTypeEnum.GROSS.equals(order.getCalculationType()))
         {
             final Item item = Item.builder()
                     .externalId("gross item")

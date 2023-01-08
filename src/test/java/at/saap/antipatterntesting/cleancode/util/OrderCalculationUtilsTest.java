@@ -1,6 +1,6 @@
 package at.saap.antipatterntesting.cleancode.util;
 
-import at.saap.antipatterntesting.cleancode.model.CalculationType;
+import at.saap.antipatterntesting.cleancode.model.CalculationTypeEnum;
 import at.saap.antipatterntesting.cleancode.model.Order;
 import at.saap.antipatterntesting.cleancode.model.output.OrderCalculationResult;
 import at.saap.antipatterntesting.util.OrderTestUtils;
@@ -17,7 +17,7 @@ public class OrderCalculationUtilsTest
     @Test
     public void testNetCalculation()
     {
-        final Order order = OrderTestUtils.createOrder(CalculationType.NET, BigDecimal.valueOf(2000.), BigDecimal.valueOf(.20));
+        final Order order = OrderTestUtils.createOrder(CalculationTypeEnum.NET, BigDecimal.valueOf(2000.), BigDecimal.valueOf(.20));
 
         final OrderCalculationResult result = OrderCalculationUtils.calculateNetOrder(order);
 
@@ -29,7 +29,7 @@ public class OrderCalculationUtilsTest
     @Test
     public void testGrossCalculation()
     {
-        final Order order = OrderTestUtils.createOrder(CalculationType.GROSS, BigDecimal.valueOf(2400.), BigDecimal.valueOf(.20));
+        final Order order = OrderTestUtils.createOrder(CalculationTypeEnum.GROSS, BigDecimal.valueOf(2400.), BigDecimal.valueOf(.20));
 
         final OrderCalculationResult result = OrderCalculationUtils.calculateGrossOrder(order);
 

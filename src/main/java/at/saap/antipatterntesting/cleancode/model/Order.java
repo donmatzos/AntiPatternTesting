@@ -16,7 +16,7 @@ public class Order
 {
     @Getter
     @Setter
-    private CalculationType calculationType;
+    private CalculationTypeEnum calculationType;
 
     @Getter
     @Setter
