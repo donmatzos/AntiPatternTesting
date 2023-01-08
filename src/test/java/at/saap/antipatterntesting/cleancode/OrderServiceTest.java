@@ -20,6 +20,7 @@ import java.util.InputMismatchException;
 @Test
 public class OrderServiceTest extends AbstractTestNGSpringContextTests
 {
+    //this -> INTEGRATION
     private final OrderServiceImpl orderService = new OrderServiceImpl();
 
     @Test

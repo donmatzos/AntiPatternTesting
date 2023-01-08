@@ -1,0 +1,24 @@
+{
+  "orderPrice": {
+    "netAmount": 2000,
+    "grossAmount": 2400,
+    "vatAmount": 400,
+    "vatRate": 0.2,
+    "currency": "EUR"
+  },
+  "calculatedItems": [
+    {
+      "name": "item 1",
+      "price": {
+        "netAmount": 2000,
+        "grossAmount": 2400,
+        "vatAmount": 400,
+        "vatRate": 0.2,
+        "currency": "EUR"
+      }
+    }
+  ],
+  "orderDate": "2023-01-08T16:25:15.279+00:00",
+  "paymentDate": "2023-01-08T16:25:15.279+00:00",
+  "calculationDate": "2023-01-08T16:25:40.067+00:00"
+}

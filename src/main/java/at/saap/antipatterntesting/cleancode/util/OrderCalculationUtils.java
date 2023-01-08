@@ -16,7 +16,6 @@ public final class OrderCalculationUtils
 
     public static OrderCalculationResult calculateNetOrder(final Order order)
     {
-        verifyOrder(order);
         calculateFromNet(order);
 
         return CalculationResultTransformer.transformOrder(order);
@@ -24,7 +23,6 @@ public final class OrderCalculationUtils
 
     public static OrderCalculationResult calculateGrossOrder(final Order order)
     {
-        verifyOrder(order);
         calculateFromGross(order);
 
         return CalculationResultTransformer.transformOrder(order);
@@ -49,59 +47,4 @@ public final class OrderCalculationUtils
             item.getPrice().setVatAmount(item.getPrice().getGrossAmount().subtract(item.getPrice().getNetAmount()));
         }
     }
-
-    private static void verifyOrder(final Order order)
-    {
-        if (order.getItems().isEmpty() || !checkPrices(order.getCalculationType(), order.getItems()))
-        {
-            throw new InputMismatchException();
-        }
-        verifyVat(order.getItems());
-    }
-
-    private static void verifyVat(final List<Item> items)
-    {
-        final BigDecimal vatRate = items.get(0).getPrice().getVatRate();
-        for (Item item : items)
-        {
-            if (item.getPrice().getVatRate() == null && vatRate.equals(item.getPrice().getVatRate()))
-            {
-                throw new InputMismatchException();
-            }
-        }
-    }
-
-    private static boolean checkPrices(final CalculationType calculationType, final List<Item> items)
-    {
-        if (CalculationType.NET.equals(calculationType))
-        {
-            return checkNetPrices(items);
-        }
-        return checkGrossPrices(items);
-    }
-
-    private static boolean checkNetPrices(final List<Item> items)
-    {
-        for (Item item : items)
-        {
-            if (item.getPrice().getNetAmount() == null)
-            {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    private static boolean checkGrossPrices(final List<Item> items)
-    {
-        for (Item item : items)
-        {
-            if (item.getPrice().getGrossAmount() == null)
-            {
-                return false;
-            }
-        }
-        return true;
-    }
-
 }
