@@ -26,7 +26,7 @@ public class OrderServiceImpl implements OrderService
                 : OrderCalculationUtils.calculateGrossOrder(order);
     }
 
-    private static void verifyOrder(final Order order)
+    private void verifyOrder(final Order order)
     {
         if (order.getItems().isEmpty() || hasIncorrectPrices(order.getCalculationType(), order.getItems()))
         {
@@ -35,7 +35,7 @@ public class OrderServiceImpl implements OrderService
         verifyVat(order.getItems());
     }
 
-    private static void verifyVat(final List<Item> items)
+    private void verifyVat(final List<Item> items)
     {
         final BigDecimal vatRate = items.get(0).getPrice().getVatRate();
         for (Item item : items)
@@ -47,17 +47,17 @@ public class OrderServiceImpl implements OrderService
         }
     }
 
-    private static boolean hasIncorrectPrices(final CalculationTypeEnum calculationType, final List<Item> items)
+    private boolean hasIncorrectPrices(final CalculationTypeEnum calculationType, final List<Item> items)
     {
         return CalculationTypeEnum.NET.equals(calculationType) ? checkNetPrices(items) : checkGrossPrices(items);
     }
 
-    private static boolean checkNetPrices(final List<Item> items)
+    private boolean checkNetPrices(final List<Item> items)
     {
         return items.stream().anyMatch(item -> item.getPrice().getNetAmount() == null);
     }
 
-    private static boolean checkGrossPrices(final List<Item> items)
+    private boolean checkGrossPrices(final List<Item> items)
     {
         return items.stream().anyMatch(item -> item.getPrice().getGrossAmount() == null);
     }
