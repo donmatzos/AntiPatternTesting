@@ -1,6 +1,5 @@
 package at.saap.antipatterntesting.antipattern;
 
-import at.saap.antipatterntesting.cleancode.model.CalculationTypeEnum;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -39,7 +38,7 @@ public class SuperOrder
 
     @Getter
     @Setter
-    private CalculationTypeEnum calculationType;
+    private String calculationType;
 
     @Getter
     @Setter

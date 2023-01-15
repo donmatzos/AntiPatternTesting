@@ -1,6 +1,5 @@
 package at.saap.antipatterntesting.antipattern;
 
-import at.saap.antipatterntesting.cleancode.model.CalculationTypeEnum;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -27,12 +26,12 @@ public class SuperOrderService
             {
                 return null;
             }
-            if (order.getCalculationType() == CalculationTypeEnum.NET
-                    && order.getItems().stream().anyMatch(item -> item.getNetAmount() == null))
+            if (order.getCalculationType().equals("NET")
+                && order.getItems().stream().anyMatch(item -> item.getNetAmount() == null))
             {
                 return null;
             }
-            else if (order.getCalculationType() == CalculationTypeEnum.GROSS
+            else if (order.getCalculationType().equals("GROSS")
                     && order.getItems().stream().anyMatch(item -> item.getGrossAmount() == null))
             {
                 return null;
@@ -45,13 +44,17 @@ public class SuperOrderService
                     return null;
                 }
             }
-            if (order.getCalculationType() == CalculationTypeEnum.NET)
+            if (order.getCalculationType().equals("NET"))
             {
                 CalculateNetOrder.calculate(order);
             }
-            else
+            else if (order.getCalculationType().equals("GROSS"))
             {
                 CalculateGrossOrder.calculate(order);
+            }
+            else
+            {
+                return null;
             }
         }
         return order;
