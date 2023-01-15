@@ -30,7 +30,7 @@ public class OrderServiceImpl implements OrderService
     {
         if (order.getItems().isEmpty() || hasIncorrectPrices(order.getCalculationType(), order.getItems()))
         {
-            throw new InputMismatchException();
+            throw new InputMismatchException("Unprocessable Order - Invalid Input.");
         }
         verifyVat(order.getItems());
     }
