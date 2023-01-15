@@ -40,7 +40,7 @@ public class OrderServiceImpl implements OrderService
         final BigDecimal vatRate = items.get(0).getPrice().getVatRate();
         for (Item item : items)
         {
-            if (item.getPrice().getVatRate() == null && vatRate.equals(item.getPrice().getVatRate()))
+            if (item.getPrice().getVatRate() == null || !vatRate.equals(item.getPrice().getVatRate()))
             {
                 throw new InputMismatchException();
             }

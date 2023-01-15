@@ -1,7 +1,9 @@
 package at.saap.antipatterntesting.cleancode;
 
 import at.saap.antipatterntesting.cleancode.model.CalculationTypeEnum;
+import at.saap.antipatterntesting.cleancode.model.Item;
 import at.saap.antipatterntesting.cleancode.model.Order;
+import at.saap.antipatterntesting.cleancode.model.Price;
 import at.saap.antipatterntesting.cleancode.model.output.OrderCalculationResult;
 import at.saap.antipatterntesting.util.OrderTestUtils;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -48,7 +50,7 @@ public class OrderServiceTest extends AbstractTestNGSpringContextTests
     }
 
     @Test(expectedExceptions = InputMismatchException.class)
-    public void testWrongInput()
+    public void testNullVatInput()
     {
         final Order order = new Order();
         order.setCalculationType(CalculationTypeEnum.NET);
@@ -56,4 +58,19 @@ public class OrderServiceTest extends AbstractTestNGSpringContextTests
 
         orderService.calculateOrder(order);
     }
+
+    @Test(expectedExceptions = InputMismatchException.class)
+    public void testWrongVatInput()
+    {
+        final Order order = new Order();
+        order.setCalculationType(CalculationTypeEnum.NET);
+        order.setItems(new ArrayList<>());
+        final Price initialPrice = Price.builder().vatRate(BigDecimal.valueOf(0.2)).build();
+        order.getItems().add(Item.builder().price(initialPrice).build());
+        final Price wrongPrice = Price.builder().vatRate(BigDecimal.valueOf(0.21)).build();
+        order.getItems().add(Item.builder().price(wrongPrice).build());
+
+        orderService.calculateOrder(order);
+    }
+
 }
