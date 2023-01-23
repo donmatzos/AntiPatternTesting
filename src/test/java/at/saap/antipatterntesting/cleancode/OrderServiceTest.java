@@ -6,6 +6,7 @@ import at.saap.antipatterntesting.cleancode.model.Order;
 import at.saap.antipatterntesting.cleancode.model.Price;
 import at.saap.antipatterntesting.cleancode.model.output.OrderCalculationResult;
 import at.saap.antipatterntesting.util.OrderTestUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
@@ -23,7 +24,8 @@ import java.util.InputMismatchException;
 public class OrderServiceTest extends AbstractTestNGSpringContextTests
 {
     //this -> INTEGRATION
-    private final OrderServiceImpl orderService = new OrderServiceImpl();
+    @Autowired
+    private OrderService orderService;
 
     @Test
     public void testNetCalculation()
