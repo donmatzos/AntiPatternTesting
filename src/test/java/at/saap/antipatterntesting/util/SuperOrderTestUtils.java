@@ -11,33 +11,29 @@ public final class SuperOrderTestUtils
 {
     public static SuperOrder createNetSuperOrder()
     {
-        final SuperItem item = SuperItem.builder()
-                .externalId("net item")
-                .netAmount(BigDecimal.valueOf(1000.))
-                .vatRate(BigDecimal.valueOf(.20))
-                .currency(Currency.getInstance("EUR"))
-                .build();
-        final SuperOrder order = SuperOrder.builder()
-                .calculationType("NET")
-                .items(new ArrayList<>())
-                .build();
-        order.getItems().add(item);
+        final SuperItem item = new SuperItem();
+        item.externalId = "net item";
+        item.netAmount = BigDecimal.valueOf(1000.);
+        item.vatRate = BigDecimal.valueOf(.20);
+        item.currency = Currency.getInstance("EUR");
+        final SuperOrder order = new SuperOrder();
+        order.calculationType = "NET";
+        order.items = new ArrayList<>();
+        order.items.add(item);
         return order;
     }
 
     public static SuperOrder createGrossSuperOrder()
     {
-        final SuperItem item = SuperItem.builder()
-                .externalId("gross item")
-                .grossAmount(BigDecimal.valueOf(1200.))
-                .vatRate(BigDecimal.valueOf(.20))
-                .currency(Currency.getInstance("EUR"))
-                .build();
-        final SuperOrder order = SuperOrder.builder()
-                .calculationType("GROSS")
-                .items(new ArrayList<>())
-                .build();
-        order.getItems().add(item);
+        final SuperItem item = new SuperItem();
+        item.externalId = "gross item";
+        item.grossAmount = BigDecimal.valueOf(1200.);
+        item.vatRate = BigDecimal.valueOf(.20);
+        item.currency = Currency.getInstance("EUR");
+        final SuperOrder order = new SuperOrder();
+        order.calculationType = "GROSS";
+        order.items = new ArrayList<>();
+        order.items.add(item);
         return order;
     }
 }

@@ -8,20 +8,20 @@ public class CalculateNetOrder
 {
     public static void calculate(SuperOrder order)
     {
-        final BigDecimal vatRate = order.getItems().get(0).getVatRate();
-        order.setVatRate(vatRate);
-        order.setNetAmount(BigDecimal.ZERO);
-        order.setVatAmount(BigDecimal.ZERO);
-        order.setGrossAmount(BigDecimal.ZERO);
-        for (SuperItem item : order.getItems())
+        final BigDecimal vatRate = order.items.get(0).vatRate;
+        order.vatRate = (vatRate);
+        order.netAmount = (BigDecimal.ZERO);
+        order.vatAmount = (BigDecimal.ZERO);
+        order.grossAmount = (BigDecimal.ZERO);
+        for (SuperItem item : order.items)
         {
-            item.setVatAmount(item.getNetAmount().multiply(vatRate));
-            item.setGrossAmount(item.getNetAmount().add(item.getVatAmount()));
-            order.setNetAmount(order.getNetAmount().add(item.getNetAmount()));
-            order.setVatAmount(order.getVatAmount().add(item.getVatAmount()));
-            order.setGrossAmount(order.getGrossAmount().add(item.getGrossAmount()));
-            order.setCurrency(item.getCurrency());
+            item.vatAmount = (item.netAmount.multiply(vatRate));
+            item.grossAmount = (item.netAmount.add(item.vatAmount));
+            order.netAmount = (order.netAmount.add(item.netAmount));
+            order.vatAmount = order.vatAmount.add(item.vatAmount);
+            order.grossAmount = order.grossAmount.add(item.grossAmount);
+            order.currency = (item.currency);
         }
-        order.setCalculationDate(Date.from(Instant.now()));
+        order.calculationDate = Date.from(Instant.now());
     }
 }

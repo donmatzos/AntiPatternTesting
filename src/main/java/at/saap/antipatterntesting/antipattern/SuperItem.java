@@ -1,40 +1,24 @@
 package at.saap.antipatterntesting.antipattern;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.util.Currency;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
 public class SuperItem
 {
-    @Getter
-    @Setter
-    private String externalId;
+    public String externalId;
 
-    @Getter
-    @Setter
-    private BigDecimal netAmount;
+    public BigDecimal netAmount;
 
-    @Getter
-    @Setter
-    private BigDecimal grossAmount;
+    public BigDecimal grossAmount;
 
-    @Getter
-    @Setter
-    private BigDecimal vatAmount;
+    public BigDecimal vatAmount;
 
-    @Getter
-    @Setter
-    private BigDecimal vatRate;
+    public BigDecimal vatRate;
 
-    @Getter
-    @Setter
-    private Currency currency;
+    public Currency currency;
 }

@@ -1,10 +1,7 @@
 package at.saap.antipatterntesting.antipattern;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.util.Currency;
@@ -13,62 +10,20 @@ import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
 public class SuperOrder
 {
-    @Getter
-    @Setter
-    private BigDecimal netAmount;
-
-    @Getter
-    @Setter
-    private BigDecimal grossAmount;
-
-    @Getter
-    @Setter
-    private BigDecimal vatAmount;
-
-    @Getter
-    @Setter
-    private BigDecimal vatRate;
-
-    @Getter
-    @Setter
-    private Currency currency;
-
-    @Getter
-    @Setter
-    private String calculationType;
-
-    @Getter
-    @Setter
-    private List<SuperItem> items;
-
-    @Getter
-    @Setter
-    private String deliveryName;
-
-    @Getter
-    @Setter
-    private String street;
-
-    @Getter
-    @Setter
-    private String country;
-
-    @Getter
-    @Setter
-    private int zipCode;
-
-    @Getter
-    @Setter
-    private Date orderDate;
-
-    @Getter
-    @Setter
-    private Date paymentDate;
-
-    @Getter
-    @Setter
-    private Date calculationDate;
+    public BigDecimal netAmount;
+    public BigDecimal grossAmount;
+    public BigDecimal vatAmount;
+    public BigDecimal vatRate;
+    public Currency currency;
+    public String calculationType;
+    public List<SuperItem> items;
+    public String deliveryName;
+    public String street;
+    public String country;
+    public int zipCode;
+    public Date orderDate;
+    public Date paymentDate;
+    public Date calculationDate;
 }
