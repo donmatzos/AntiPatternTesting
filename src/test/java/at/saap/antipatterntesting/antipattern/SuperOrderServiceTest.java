@@ -19,8 +19,8 @@ public class SuperOrderServiceTest
         SuperOrder order = SuperOrderTestUtils.createNetSuperOrder();
         order = service.calculateOrder(order);
 
-        Assert.assertEquals(order.getGrossAmount().doubleValue(), 1200.);
-        Assert.assertEquals(order.getVatAmount().doubleValue(), 200.);
+        Assert.assertEquals(order.grossAmount.doubleValue(), 1200.);
+        Assert.assertEquals(order.vatAmount.doubleValue(), 200.);
     }
 
     @Test
@@ -28,8 +28,8 @@ public class SuperOrderServiceTest
     {
         SuperOrder order = SuperOrderTestUtils.createGrossSuperOrder();
         order = service.calculateOrder(order);
-        Assert.assertEquals(order.getNetAmount().doubleValue(), 1000.);
-        Assert.assertEquals(order.getVatAmount().doubleValue(), 200.);
+        Assert.assertEquals(order.netAmount.doubleValue(), 1000.);
+        Assert.assertEquals(order.vatAmount.doubleValue(), 200.);
     }
 
 }

@@ -12,10 +12,10 @@ import java.util.List;
 @NoArgsConstructor
 public class SuperOrder
 {
-    public BigDecimal netAmount;
-    public BigDecimal grossAmount;
-    public BigDecimal vatAmount;
-    public BigDecimal vatRate;
+    public BigDecimal netAmount = BigDecimal.ZERO;
+    public BigDecimal grossAmount = BigDecimal.ZERO;
+    public BigDecimal vatAmount = BigDecimal.ZERO;
+    public BigDecimal vatRate = BigDecimal.ZERO;
     public Currency currency;
     public String calculationType;
     public List<SuperItem> items;

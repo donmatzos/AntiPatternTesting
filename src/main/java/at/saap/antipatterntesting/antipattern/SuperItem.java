@@ -12,13 +12,13 @@ public class SuperItem
 {
     public String externalId;
 
-    public BigDecimal netAmount;
+    public BigDecimal netAmount = BigDecimal.ZERO;
 
-    public BigDecimal grossAmount;
+    public BigDecimal grossAmount = BigDecimal.ZERO;
 
-    public BigDecimal vatAmount;
+    public BigDecimal vatAmount = BigDecimal.ZERO;
 
-    public BigDecimal vatRate;
+    public BigDecimal vatRate = BigDecimal.ZERO;
 
     public Currency currency;
 }

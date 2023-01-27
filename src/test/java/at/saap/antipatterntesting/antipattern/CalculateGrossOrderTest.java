@@ -8,13 +8,13 @@ import org.testng.annotations.Test;
 public class CalculateGrossOrderTest
 {
     @Test
-    public void testNetOrderCalculation()
+    public void testGrossOrderCalculation()
     {
         SuperOrder order = SuperOrderTestUtils.createGrossSuperOrder();
 
-        CalculateNetOrder.calculate(order);
+        CalculateGrossOrder.calculate(order);
 
-        Assert.assertEquals(order.getNetAmount().doubleValue(), 1000.);
-        Assert.assertEquals(order.getVatAmount().doubleValue(), 200.);
+        Assert.assertEquals(order.netAmount.doubleValue(), 1000.);
+        Assert.assertEquals(order.vatAmount.doubleValue(), 200.);
     }
 }

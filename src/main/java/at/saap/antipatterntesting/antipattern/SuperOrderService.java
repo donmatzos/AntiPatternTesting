@@ -22,33 +22,33 @@ public class SuperOrderService
         //"VERIFICATION"
         if (order != null)
         {
-            if (order.getItems().isEmpty())
+            if (order.items.isEmpty())
             {
                 return null;
             }
-            if (order.getCalculationType().equals("NET")
-                && order.getItems().stream().anyMatch(item -> item.getNetAmount() == null))
+            if (order.calculationType.equals("NET")
+                && order.items.stream().anyMatch(item -> item.netAmount == null))
             {
                 return null;
             }
-            else if (order.getCalculationType().equals("GROSS")
-                    && order.getItems().stream().anyMatch(item -> item.getGrossAmount() == null))
+            else if (order.calculationType.equals("GROSS")
+                    && order.items.stream().anyMatch(item -> item.grossAmount == null))
             {
                 return null;
             }
-            final BigDecimal vatRate = order.getItems().get(0).getVatRate();
-            for (SuperItem item : order.getItems())
+            final BigDecimal vatRate = order.items.get(0).vatRate;
+            for (SuperItem item : order.items)
             {
-                if (item.getVatRate() == null && vatRate.equals(item.getVatRate()))
+                if (!vatRate.equals(item.vatRate))
                 {
                     return null;
                 }
             }
-            if (order.getCalculationType().equals("NET"))
+            if (order.calculationType.equals("NET"))
             {
                 CalculateNetOrder.calculate(order);
             }
-            else if (order.getCalculationType().equals("GROSS"))
+            else if (order.calculationType.equals("GROSS"))
             {
                 CalculateGrossOrder.calculate(order);
             }
