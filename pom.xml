@@ -8,7 +8,7 @@
         <version>2.7.5</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.example</groupId>
+    <groupId>at.saap.antipatterntesting</groupId>
     <artifactId>AntiPatternTesting</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>AntiPatternTesting</name>
@@ -103,6 +103,12 @@
                                     <goal>report</goal>
                                 </goals>
                                 <configuration>
+                                    <dataFile>
+                                        target/jacoco.exec
+                                    </dataFile>
+                                    <outputDirectory>
+                                        target/site/jacoco/jacoco.xml
+                                    </outputDirectory>
                                     <formats>
                                         <format>XML</format>
                                     </formats>
