@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CalculationResultTransformer.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">AntiPatternTesting</a> &gt; <a href="index.source.html" class="el_package">at.saap.antipatterntesting.cleancode.util</a> &gt; <span class="el_source">CalculationResultTransformer.java</span></div><h1>CalculationResultTransformer.java</h1><pre class="source lang-java linenums">package at.saap.antipatterntesting.cleancode.util;
+
+import at.saap.antipatterntesting.cleancode.model.Item;
+import at.saap.antipatterntesting.cleancode.model.Order;
+import at.saap.antipatterntesting.cleancode.model.Price;
+import at.saap.antipatterntesting.cleancode.model.output.OrderCalculationResult;
+
+import java.time.Instant;
+import java.util.Date;
+
+public final class CalculationResultTransformer
+{
+    private CalculationResultTransformer() {}
+
+    public static OrderCalculationResult transformOrder(final Order order)
+    {
+<span class="fc" id="L17">        final OrderCalculationResult result = new OrderCalculationResult();</span>
+<span class="fc" id="L18">        fillBasicOrderInformation(result, order);</span>
+<span class="fc" id="L19">        calculateTotalOrderSum(result);</span>
+
+<span class="fc" id="L21">        return result;</span>
+    }
+
+    private static void fillBasicOrderInformation(final OrderCalculationResult result, final Order order)
+    {
+<span class="fc" id="L26">        result.setCalculatedItems(order.getItems());</span>
+<span class="fc" id="L27">        result.setDeliveryAddress(order.getDeliveryAddress());</span>
+<span class="fc" id="L28">        result.setOrderDate(order.getOrderDate());</span>
+<span class="fc" id="L29">        result.setPaymentDate(order.getPaymentDate());</span>
+<span class="fc" id="L30">    }</span>
+
+    private static void calculateTotalOrderSum(final OrderCalculationResult result)
+    {
+<span class="fc" id="L34">        final Price totalPrice = new Price();</span>
+<span class="fc bfc" id="L35" title="All 2 branches covered.">        for (Item item : result.getCalculatedItems())</span>
+        {
+<span class="fc" id="L37">            totalPrice.setNetAmount(BigDecimalUtils.nullSafeAdd(totalPrice.getNetAmount(), item.getPrice().getNetAmount()));</span>
+<span class="fc" id="L38">            totalPrice.setVatAmount(BigDecimalUtils.nullSafeAdd(totalPrice.getVatAmount(), item.getPrice().getVatAmount()));</span>
+<span class="fc" id="L39">            totalPrice.setGrossAmount(BigDecimalUtils.nullSafeAdd(totalPrice.getGrossAmount(), item.getPrice().getGrossAmount()));</span>
+<span class="fc" id="L40">        }</span>
+<span class="fc" id="L41">        result.setOrderPrice(totalPrice);</span>
+<span class="fc" id="L42">        result.getOrderPrice().setVatRate(result.getCalculatedItems().get(0).getPrice().getVatRate());</span>
+<span class="fc" id="L43">        result.getOrderPrice().setCurrency(result.getCalculatedItems().get(0).getPrice().getCurrency());</span>
+<span class="fc" id="L44">        result.setCalculationDate(Date.from(Instant.now()));</span>
+<span class="fc" id="L45">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

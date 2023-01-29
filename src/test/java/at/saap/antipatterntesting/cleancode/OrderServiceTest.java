@@ -74,5 +74,4 @@ public class OrderServiceTest extends AbstractTestNGSpringContextTests
 
         orderService.calculateOrder(order);
     }
-
 }
