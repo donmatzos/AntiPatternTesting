@@ -9,18 +9,12 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@Getter
+@Setter
 public class DeliveryAddress
 {
-    @Getter
-    @Setter
     private String name;
-    @Getter
-    @Setter
     private String street;
-    @Getter
-    @Setter
     private String country;
-    @Getter
-    @Setter
     private int zipCode;
 }

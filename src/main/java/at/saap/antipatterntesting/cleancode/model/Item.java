@@ -9,13 +9,10 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@Getter
+@Setter
 public class Item
 {
-    @Getter
-    @Setter
     private String externalId;
-
-    @Getter
-    @Setter
     private Price price;
 }

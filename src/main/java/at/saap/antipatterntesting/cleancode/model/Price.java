@@ -12,25 +12,13 @@ import java.util.Currency;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@Getter
+@Setter
 public class Price
 {
-    @Getter
-    @Setter
     private BigDecimal netAmount;
-
-    @Getter
-    @Setter
     private BigDecimal grossAmount;
-
-    @Getter
-    @Setter
     private BigDecimal vatAmount;
-
-    @Getter
-    @Setter
     private BigDecimal vatRate;
-
-    @Getter
-    @Setter
     private Currency currency;
 }

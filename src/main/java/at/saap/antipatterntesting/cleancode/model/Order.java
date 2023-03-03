@@ -12,25 +12,13 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@Getter
+@Setter
 public class Order
 {
-    @Getter
-    @Setter
     private CalculationTypeEnum calculationType;
-
-    @Getter
-    @Setter
     private List<Item> items;
-
-    @Getter
-    @Setter
     private DeliveryAddress deliveryAddress;
-
-    @Getter
-    @Setter
     private Date orderDate;
-
-    @Getter
-    @Setter
     private Date paymentDate;
 }

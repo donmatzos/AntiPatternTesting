@@ -13,29 +13,14 @@ import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
 public class OrderCalculationResult
 {
-    @Getter
-    @Setter
     private Price orderPrice;
-
-    @Getter
-    @Setter
     private List<Item> calculatedItems;
-
-    @Getter
-    @Setter
     private DeliveryAddress deliveryAddress;
-
-    @Getter
-    @Setter
     private Date orderDate;
-
-    @Getter
-    @Setter
     private Date paymentDate;
-
-    @Getter
-    @Setter
     private Date calculationDate;
 }
