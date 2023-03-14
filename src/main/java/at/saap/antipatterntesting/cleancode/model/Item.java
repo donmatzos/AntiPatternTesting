@@ -6,13 +6,21 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.io.Serial;
+import java.io.Serializable;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Getter
-@Setter
-public class Item
+
+public class Item implements Serializable
 {
+    @Serial
+    private static final long serialVersionUID = 1L;
+    @Getter
+    @Setter
     private String externalId;
+    @Getter
+    @Setter
     private Price price;
 }

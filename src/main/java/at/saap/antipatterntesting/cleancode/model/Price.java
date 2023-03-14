@@ -6,19 +6,32 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Currency;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Getter
-@Setter
-public class Price
+
+public class Price implements Serializable
 {
+    @Serial
+    private static final long serialVersionUID = 1L;
+    @Getter
+    @Setter
     private BigDecimal netAmount;
+    @Getter
+    @Setter
     private BigDecimal grossAmount;
+    @Getter
+    @Setter
     private BigDecimal vatAmount;
+    @Getter
+    @Setter
     private BigDecimal vatRate;
+    @Getter
+    @Setter
     private Currency currency;
 }
